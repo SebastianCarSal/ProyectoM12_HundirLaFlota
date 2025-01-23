@@ -1,0 +1,239 @@
+body {  
+  font-family: 'MiFuentePersonalizada';
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: url('img/fondo.jpeg') no-repeat center center fixed; /* Imagen centrada */
+  background-size: cover; /* La imagen cubre toda la pantalla */
+  color: white; /* Ajusta el color del texto para que sea legible sobre el fondo */
+  overflow: hidden; /* Evita barra lateral */
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  color: #fff; /* Color base del texto */
+}
+
+
+p#status {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.boards {
+  font-family: 'MiFuentePersonalizada';
+  display: flex;
+  justify-content: center;
+  gap: 60px; /* Espacio reducido entre los tableros */
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 35px); /* Reducido el tamaño de columnas */
+  grid-template-rows: repeat(10, 35px);   /* Reducido el tamaño de filas */
+  gap: 3px; /* Espacio ajustado entre las celdas */
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para contraste */
+  padding: 8px; /* Padding ajustado */
+  border: 3px solid #fff; /* Borde ligeramente más grueso */
+  overflow: hidden; /* Evita barra lateral */
+}
+
+.cell {
+  width: 35px; /* Tamaño ajustado de las celdas */
+  height: 35px; /* Tamaño ajustado de las celdas */
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/*.cell.ship {
+  background-color: #87ceeb; /* Azul para los barcos 
+}*/
+
+.cell.hit {
+  background-image: url("img/hit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.miss {
+  background-image: url("img/agua.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+@font-face {
+  font-family: 'MiFuentePersonalizada';
+  src: url('fonts/mi-fuente.ttf') format('truetype');
+}
+
+/* Animación para las imágenes de los barcos */
+.cell.ship.horizontal-ship {
+  background-image: url(img/bh_medio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.horizontal-ship.start {
+  background-image: url(img/bh_inicio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.horizontal-ship.end {
+  background-image: url(img/bh_final.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship {
+  background-image: url(img/bv_medio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship.start{
+  background-image: url(img/bv_inicio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship.end{
+  background-image: url(img/bv_final.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*===========================================*/
+/* Animación para las imágenes de los barcos */
+.cell.ship.horizontal-ship.hit {
+  background-image: url(img/bh_medio_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.horizontal-ship.start.hit {
+  background-image: url(img/bh_inicio_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.horizontal-ship.end.hit {
+  background-image: url(img/bh_final_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship.hit {
+  background-image: url(img/bv_medio_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship.start.hit{
+  background-image: url(img/bv_inicio_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell.ship.vertical-ship.end.hit{
+  background-image: url(img/bv_final_h.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con 70% de opacidad */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  /*background-color: white;*/
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 1500px;
+  color: white; /* Color del texto */
+  max-height: 80vh; /* Máximo 80% de la altura del viewport */
+  overflow-y: auto; /* Para permitir el scroll si el contenido es mayor que el área visible */
+}
+
+/* Texto con efecto neón */
+h1, h2, p {
+  text-shadow:  
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff,
+    0 0 80px #0ff; /* Efecto neón */
+  animation: neon-glow 1.5s infinite alternate; /* Animación de brillo */
+}
+
+.modal-content p {
+  font-size: 7em; /* Texto más grande */
+  margin-bottom: 15px; /* Espaciado inferior */
+}
+
+.modal-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #0056b3;
+}
+
+/* Animación de neón */
+@keyframes neon-glow {
+  from {
+    text-shadow: 
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 20px #0ff,
+      0 0 40px #0ff,
+      0 0 80px #0ff;
+  }
+  to {
+    text-shadow: 
+      0 0 10px #0ff,
+      0 0 20px #0ff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 160px #0ff;
+  }
+}

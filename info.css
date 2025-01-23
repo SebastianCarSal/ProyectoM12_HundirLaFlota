@@ -1,0 +1,104 @@
+
+        /* Estilo para el fondo de la página */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('img/fondomenu2.jpg');
+            /* Ruta de la imagen de fondo */
+            background-size: cover;
+            /* Asegura que la imagen cubra toda la pantalla */
+            background-position: center;
+            /* Centra la imagen en la pantalla */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            position: relative;
+            /* Necesario para posicionar el overlay */
+        }
+
+        /* Overlay oscuro */
+        body::after {
+            content: '';
+            /* Necesario para crear el pseudo-elemento */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Sombra oscura con opacidad */
+            z-index: -1;
+            /* Coloca el overlay detrás del contenido */
+        }
+
+        /* Contenedor principal centrado con márgenes */
+        .container {
+            width: 80%;
+            /* Ancho del contenedor */
+            max-width: 1000px;
+            /* Ancho máximo */
+            margin: 50px auto;
+            /* Márgenes a los lados y arriba/abajo */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Fondo ligeramente oscuro */
+            border-radius: 15px;
+            /* Bordes redondeados */
+        }
+
+        /* Estilo para el título */
+        h1 {
+            font-family: 'MiFuentePersonalizada';
+            font-size: 4em;
+            margin: 0;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+            /* Sombra al título */
+            position: absolute;
+            top: 50px;
+            /* Título pegado a la parte superior */
+        }
+
+        /* Estilo para el texto */
+        .text-container {
+            font-family: 'Lucida Console', monospace;
+            font-size: 25px;
+            text-align: left;
+            color: white;
+            width: 65%;
+            /* Toma el 45% del contenedor */
+        }
+
+        /* Estilo para la imagen */
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            /* Asegura que la imagen se ajuste al tamaño sin deformarse */
+        }
+
+        /* Estilo para la imagen pequeña en la esquina */
+        .back-link {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-image: url('img/volver.png'); /* Cambia esta ruta por la de tu imagen */
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Estilo para hacer que la imagen sea clickeable */
+        .back-link:hover {
+            opacity: 0.7;
+        }
