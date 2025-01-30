@@ -1,4 +1,4 @@
-const boardSize = 5; // Cambiado a 10x10
+const boardSize = 10; // Cambiado a 10x10
 const ships = [
   { size: 2, positions: [], hits: 0 }, // Barco de 2 casillas
   { size: 2, positions: [], hits: 0 }, // Barco de 2 casillas
