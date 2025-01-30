@@ -195,10 +195,11 @@ function findShipAtPosition(ships, x, y) {
   );
 }
 
-
+let playerTurn = true; // Comienza siendo el turno del jugador
 // handle del movimiento del jugador
+
 function handlePlayerMove(x, y) {
-  if (gameOver) return;
+  if (!playerTurn || gameOver) return; // Bloquea el turno si no es del jugad
 
   const cell = document.querySelector(`#enemy-board .cell[data-x="${x}"][data-y="${y}"]`);
   if (cell.classList.contains('hit') || cell.classList.contains('miss')) return;
@@ -215,13 +216,19 @@ function handlePlayerMove(x, y) {
       updateStatus(`¡Hundiste un barco enemigo de tamaño ${hitShip.size}!`);
       showTurnModal(`¡Hundiste un barco enemigo de tamaño ${hitShip.size}!`, () => {
         checkWin();
-        if (!gameOver) machineMove();
+        if (!gameOver){
+          playerTurn = false; // Deshabilitar el turno del jugador
+          machineMove();
+        }
       });
     } else {
       updateStatus('¡Tocado!');
       showTurnModal('¡Tocado!', () => {
         checkWin();
-        if (!gameOver) machineMove();
+        if (!gameOver) {
+          playerTurn = false; // Deshabilitar el turno del jugador
+          machineMove();
+        }
       });
     }
   } else {
@@ -229,12 +236,13 @@ function handlePlayerMove(x, y) {
     updateStatus('¡Agua!');
     showTurnModal('¡Agua!', () => {
       checkWin();
-      if (!gameOver) machineMove();
+      if (!gameOver){
+        playerTurn = false; // Deshabilitar el turno del jugador
+        machineMove();
+      }
     });
   }
 }
-
-
 
 //movimiento random de la maquina
 function machineMove() {
@@ -256,19 +264,26 @@ function machineMove() {
 
       if (hitShip.hits === hitShip.size) {
         updateStatus(`¡La máquina hundió tu barco de tamaño ${hitShip.size}!`);
-        showTurnModal(`¡La máquina hundió tu barco de tamaño ${hitShip.size}!`);
+        showTurnModal(`¡La máquina hundió tu barco de tamaño ${hitShip.size}!`, () => {
+          checkWin();
+          if (!gameOver) playerTurn = true; // Habilita el turno del jugador
+        });
       } else {
         updateStatus('La máquina acertó el disparo.');
-        showTurnModal('La máquina acertó el disparo.');
+        showTurnModal('La máquina acertó el disparo.', () => {
+          checkWin();
+          if (!gameOver) playerTurn = true; // Habilita el turno del jugador
+        });
       }
     } else {
       cell.classList.add('miss');
       updateStatus('La máquina falló.');
-      showTurnModal('La máquina falló.');
+      showTurnModal('La máquina falló.', () => {
+        checkWin();
+        if (!gameOver) playerTurn = true; // Habilita el turno del jugador
+      });
     }
-    checkWin();
   }, 3000);
-  checkWin();
 }
 
 
